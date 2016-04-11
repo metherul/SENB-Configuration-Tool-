@@ -1,0 +1,10 @@
+C:\C# Projects\ENB Manager\ENB Manager\bin\Debug\ENB Manager.exe.config
+C:\C# Projects\ENB Manager\ENB Manager\bin\Debug\ENB Manager.exe
+C:\C# Projects\ENB Manager\ENB Manager\bin\Debug\ENB Manager.pdb
+C:\C# Projects\ENB Manager\ENB Manager\bin\Debug\MaterialSkin.dll
+C:\C# Projects\ENB Manager\ENB Manager\obj\Debug\ENB Manager.csprojResolveAssemblyReference.cache
+C:\C# Projects\ENB Manager\ENB Manager\obj\Debug\ENB_Manager.MainForm.resources
+C:\C# Projects\ENB Manager\ENB Manager\obj\Debug\ENB_Manager.Properties.Resources.resources
+C:\C# Projects\ENB Manager\ENB Manager\obj\Debug\ENB Manager.csproj.GenerateResource.Cache
+C:\C# Projects\ENB Manager\ENB Manager\obj\Debug\ENB Manager.exe
+C:\C# Projects\ENB Manager\ENB Manager\obj\Debug\ENB Manager.pdb
