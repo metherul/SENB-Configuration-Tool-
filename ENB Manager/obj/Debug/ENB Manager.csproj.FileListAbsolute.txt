@@ -8,3 +8,4 @@ C:\C# Projects\ENB Manager\ENB Manager\obj\Debug\ENB_Manager.Properties.Resource
 C:\C# Projects\ENB Manager\ENB Manager\obj\Debug\ENB Manager.csproj.GenerateResource.Cache
 C:\C# Projects\ENB Manager\ENB Manager\obj\Debug\ENB Manager.exe
 C:\C# Projects\ENB Manager\ENB Manager\obj\Debug\ENB Manager.pdb
+C:\C# Projects\ENB Manager\ENB Manager\bin\Debug\MaterialSkin.pdb
