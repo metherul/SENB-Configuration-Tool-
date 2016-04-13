@@ -84,6 +84,7 @@
             this.savePreset_TextBox.Font = new System.Drawing.Font("Roboto Light", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.savePreset_TextBox.Hint = "";
             this.savePreset_TextBox.Location = new System.Drawing.Point(115, 10);
+            this.savePreset_TextBox.MaxLength = 32767;
             this.savePreset_TextBox.MouseState = MaterialSkin.MouseState.HOVER;
             this.savePreset_TextBox.Name = "savePreset_TextBox";
             this.savePreset_TextBox.PasswordChar = '\0';
@@ -92,6 +93,7 @@
             this.savePreset_TextBox.SelectionStart = 0;
             this.savePreset_TextBox.Size = new System.Drawing.Size(500, 23);
             this.savePreset_TextBox.TabIndex = 6;
+            this.savePreset_TextBox.TabStop = false;
             this.savePreset_TextBox.Text = "Preset Test";
             this.savePreset_TextBox.UseSystemPasswordChar = false;
             this.savePreset_TextBox.TextChanged += new System.EventHandler(this.savePreset_TextBox_TextChanged);
@@ -304,6 +306,7 @@
             this.SkyrimLocation_TextBox.Depth = 0;
             this.SkyrimLocation_TextBox.Hint = "";
             this.SkyrimLocation_TextBox.Location = new System.Drawing.Point(134, 46);
+            this.SkyrimLocation_TextBox.MaxLength = 32767;
             this.SkyrimLocation_TextBox.MouseState = MaterialSkin.MouseState.HOVER;
             this.SkyrimLocation_TextBox.Name = "SkyrimLocation_TextBox";
             this.SkyrimLocation_TextBox.PasswordChar = '\0';
@@ -312,6 +315,7 @@
             this.SkyrimLocation_TextBox.SelectionStart = 0;
             this.SkyrimLocation_TextBox.Size = new System.Drawing.Size(421, 23);
             this.SkyrimLocation_TextBox.TabIndex = 5;
+            this.SkyrimLocation_TextBox.TabStop = false;
             this.SkyrimLocation_TextBox.UseSystemPasswordChar = false;
             this.SkyrimLocation_TextBox.TextChanged += new System.EventHandler(this.SkyrimLocation_TextBox_TextChanged);
             // 
@@ -335,6 +339,7 @@
             this.SKSELocation_TextBox.Depth = 0;
             this.SKSELocation_TextBox.Hint = "";
             this.SKSELocation_TextBox.Location = new System.Drawing.Point(134, 13);
+            this.SKSELocation_TextBox.MaxLength = 32767;
             this.SKSELocation_TextBox.MouseState = MaterialSkin.MouseState.HOVER;
             this.SKSELocation_TextBox.Name = "SKSELocation_TextBox";
             this.SKSELocation_TextBox.PasswordChar = '\0';
@@ -343,6 +348,7 @@
             this.SKSELocation_TextBox.SelectionStart = 0;
             this.SKSELocation_TextBox.Size = new System.Drawing.Size(421, 23);
             this.SKSELocation_TextBox.TabIndex = 3;
+            this.SKSELocation_TextBox.TabStop = false;
             this.SKSELocation_TextBox.UseSystemPasswordChar = false;
             this.SKSELocation_TextBox.TextChanged += new System.EventHandler(this.SKSELocation_TextBox_TextChanged);
             // 

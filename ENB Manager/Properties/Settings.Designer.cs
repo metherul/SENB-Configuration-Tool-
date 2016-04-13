@@ -46,5 +46,17 @@ namespace ENB_Manager.Properties {
                 this["SkyrimLocation"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string InstalledPreset {
+            get {
+                return ((string)(this["InstalledPreset"]));
+            }
+            set {
+                this["InstalledPreset"] = value;
+            }
+        }
     }
 }

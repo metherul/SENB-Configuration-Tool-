@@ -27,6 +27,8 @@ namespace ENB_Manager
         public string enbFileFilter;
         public string presetFileName;
 
+        public string presetToInstallName;
+
         //Storage variables
         public string item;
 
@@ -34,12 +36,16 @@ namespace ENB_Manager
         public string[] skyrimDirectories;
         public string[] enbFileFilterArray;
 
-        public string[] settingsArray;
-
         public string[] savedPresetsArray;
+
+        public string[] presetFilesToInstall;
+        public string[] presetDirectoriesToInstall;
 
         public List<string> matchingFiles;
         public List<string> matchingDirectories;
+
+        public List<string> matchingPresetFiles;
+        public List<string> matchingPresetDirectories;
 
         //UI 
         MaterialSkinManager materialSkinManager;
@@ -150,7 +156,88 @@ namespace ENB_Manager
 
         private void installPreset_Button_Click(object sender, EventArgs e)
         {
+            //Get the preset to install name
+            presetToInstallName = savedPresets_ComboBox.Text;
 
+            skyrimLocation = SkyrimLocation_TextBox.Text;
+
+            //Get all the files in the preset directory
+            presetFilesToInstall = Directory.GetFiles(metaLocation + @"\data\presets\" + presetToInstallName);
+            presetDirectoriesToInstall = Directory.GetDirectories(metaLocation + @"\data\presets\" + presetToInstallName);
+
+            //Get all current files in Skyrim directory
+            skyrimFiles = Directory.GetFiles(skyrimLocation);
+            skyrimDirectories = Directory.GetDirectories(skyrimLocation);
+
+            //Read through the ENB filter again
+            enbFileFilterArray = File.ReadAllLines(metaLocation + @"data\EnbFiles.cfg");
+
+            debug2_TextBox.AppendText("STEP 1" + Environment.NewLine);
+
+            //Remove all existing ENB files in the Skyrim directory NOTE: Make this a warning
+            foreach (string file in skyrimFiles)
+            {
+                //Since File has the complete path, remove it
+                if (enbFileFilterArray.Contains(file.Replace(skyrimLocation + @"\", "")))
+                {
+                    //Deletes the file
+                    File.Delete(file);
+
+                    debug2_TextBox.AppendText("File Deleted: " + file + Environment.NewLine);
+                }
+            }
+
+            debug2_TextBox.AppendText("STEP 2" + Environment.NewLine);
+
+            //Remove all existing ENB directories in the Skyrim directory NOTE: Make this a warning
+            foreach (string directory in skyrimDirectories)
+            {
+                //Since the directory has the complete path, remove it
+                if (enbFileFilterArray.Contains(directory.Replace(skyrimLocation + @"\", "")))
+                {
+                    //Deletes the Directory
+                    Directory.Delete(directory);
+
+                    debug2_TextBox.AppendText("Directory Deleted: " + directory + Environment.NewLine);
+                }
+            }
+
+            debug2_TextBox.AppendText("STEP 3" + Environment.NewLine);
+
+            //Add all files from the preset directory into the matchingPresetFiles list
+            foreach (string file in presetFilesToInstall)
+            {
+                //Since the preset file has the complete path, remove it
+                if (enbFileFilterArray.Contains(file.Replace(metaLocation + @"\data\presets" + presetToInstallName, "")))
+                {
+                    //If it is in the EnbFilter, add it to the matchingPresetFiles list
+                    matchingPresetFiles.Add(file);
+
+                    debug2_TextBox.AppendText("File Added: " + file + Environment.NewLine);
+                }
+            }
+
+            //Add all directories from the preset directory into the matchingPresetDirectories list (FULL PATH)
+            foreach (string directory in presetDirectoriesToInstall)
+            {
+                //Since the preset directory has the complete path, remove it
+                if (enbFileFilterArray.Contains(directory.Replace(metaLocation + @"\data\presets" + presetToInstallName, "")))
+                {
+                    //If it is in the EnbFilter, add it to the matchingPresetDirectories list (FULL PATH)
+                    matchingPresetDirectories.Add(directory);
+
+                    debug2_TextBox.AppendText("Directory Added: " + directory + Environment.NewLine);
+                }
+            }
+
+            //===//
+
+            //Copy all the files into the Skyrim directory
+            //foreach (string file in matchingPresetFiles)
+            //{
+            //    //Copy the files
+            //    File.Copy()
+            //}
         }
 
         private void debugUI_CheckBox_CheckedChanged(object sender, EventArgs e)
@@ -316,27 +403,9 @@ namespace ENB_Manager
 
             matchingFiles = new List<string>();
             matchingDirectories = new List<string>();
-        }
 
-        public void DeleteDirectory(string target_dir)
-        {
-            //Not needed anymore, but I'll keep it around just in case. 
-
-            string[] files = Directory.GetFiles(target_dir);
-            string[] dirs = Directory.GetDirectories(target_dir);
-
-            foreach (string file in files)
-            {
-                File.SetAttributes(file, FileAttributes.Normal);
-                File.Delete(file);
-            }
-
-            foreach (string dir in dirs)
-            {
-                DeleteDirectory(dir);
-            }
-
-            Directory.Delete(target_dir, false);
+            matchingPresetFiles = new List<string>();
+            matchingPresetDirectories = new List<string>();
         }
 
         public void AnalyseDirectory()
@@ -376,15 +445,6 @@ namespace ENB_Manager
             }
 
             debug_TextBox.AppendText(Environment.NewLine);
-        }
-
-        public void ApplySettings()
-        {
-            //Not needed due to in-grained application settings
-
-            File.WriteAllLines(metaLocation + @"data\Settings.cfg", settingsArray);
-
-            File.ReadAllLines(metaLocation + @"data\Settings.cfg");
         }
     }
 }
